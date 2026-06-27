@@ -1,0 +1,95 @@
+.app {
+  display: grid;
+  grid-template-columns: var(--sidebar-width) 1fr;
+}
+
+/* _________ sidebar_________ */
+
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  background-color: var(--bg-secondary);
+}
+
+.sidebar__logo {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 1rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.sidebar__logo-icon {
+  background-color: var(--accent);
+  border-radius: var(--radius-md);
+  width: 30px;
+  height: 30px;
+  margin-right: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* _________ sidebar_nav_________ */
+
+.sidebar__nav {
+  flex: 1;
+  padding: 1rem;
+}
+.sidebar__nav-btn {
+  text-align: start;
+  width: 100%;
+  color: var(--text-muted);
+  border-radius: var(--radius-sm);
+  padding: 0.5rem;
+  font-size: 15px;
+}
+.sidebar__nav-btn:hover {
+  background-color: var(--bg-card);
+  color: var(--text-primary);
+}
+.sidebar__nav-btn--active {
+  border-left: 2px solid var(--accent);
+  border-radius: var(--radius-sm);
+  background-color: var(--bg-card-hover);
+  color: var(--text-primary);
+}
+
+.sidebar__nav-btn--active .sidebar__nav-icon {
+  color: var(--accent);
+}
+
+/* _________ sidebar_User_________ */
+
+.sidebar__user {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  border-top: 1px solid var(--border);
+  padding: 0.5rem;
+}
+.sidebar__user-avatar {
+  background-color: var(--accent);
+  width: 30px;
+  height: 30px;
+  border-radius: 9999px;
+  font-size: 12px;
+  display: grid;
+  justify-content: center;
+  align-items: center;
+}
+.sidebar__user-info {
+  margin-left: 0.5rem;
+}
+.sidebar__user-name {
+  color: var(--text-primary);
+}
+.sidebar__user-email {
+  color: var(--text-secondary);
+}
+.sidebar__user-logout {
+  border-left: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  color: var(--text-muted);
+}
