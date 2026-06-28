@@ -10,6 +10,7 @@
   flex-direction: column;
   height: 100vh;
   background-color: var(--bg-secondary);
+  border: 1px solid var(--border);
 }
 
 .sidebar__logo {
