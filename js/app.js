@@ -9,6 +9,8 @@ const pages = document.querySelectorAll(".page");
 const btns = document.querySelectorAll(".sidebar__nav-btn");
 const pageTitle = document.querySelector("#page-title");
 
+initState();
+
 function navigateTo(pageId) {
   pages.forEach((page) => page.classList.remove("page--active"));
 
