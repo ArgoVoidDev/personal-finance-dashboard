@@ -24,6 +24,10 @@ function navigateTo(pageId) {
   activeBtn.classList.add("sidebar__nav-btn--active");
 
   pageTitle.textContent = pageTitles[pageId];
+
+  if (pageId === "dashboard") {
+    initDashboard();
+  }
 }
 btns.forEach((button) => {
   button.addEventListener("click", (event) => {
@@ -32,4 +36,5 @@ btns.forEach((button) => {
     navigateTo(pageId);
   });
 });
+
 navigateTo("dashboard");
