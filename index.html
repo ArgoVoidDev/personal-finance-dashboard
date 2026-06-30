@@ -12,6 +12,10 @@
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+    />
 
     <!-- Chart.js -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js" defer></script>
@@ -93,7 +97,76 @@
         <!-- Pages -->
         <main class="content">
           <section id="dashboard" class="page page--active">
-            <!-- ......... -->
+            <div class="dashboard">
+              <div class="dashboard__stats">
+                <div class="stat-card">
+                  <div class="stat-card__header">
+                    <h3>Total Balance</h3>
+                    <i class="fa-solid fa-wallet"></i>
+                  </div>
+                  <div class="stat-card__amount" id="stat-balance"></div>
+                </div>
+                <div class="stat-card">
+                  <div class="stat-card__header">
+                    <h3>Monthly Income</h3>
+                    <i class="fa-solid fa-arrow-trend-up"></i>
+                  </div>
+                  <div class="stat-card__amount" id="stat-income"></div>
+                  <div class="stat-card__change" id="stat-income-change"></div>
+                </div>
+                <div class="stat-card">
+                  <div class="stat-card__header">
+                    <h3>Monthly Expenses</h3>
+                    <i class="fa-solid fa-arrow-trend-down"></i>
+                  </div>
+                  <div class="stat-card__amount" id="stat-expenses"></div>
+                  <div
+                    class="stat-card__change"
+                    id="stat-expenses-change"
+                  ></div>
+                </div>
+                <div class="stat-card">
+                  <div class="stat-card__header">
+                    <h3>Net Savings</h3>
+                    <i class="fa-solid fa-dollar-sign"></i>
+                  </div>
+                  <div class="stat-card__amount" id="stat-savings"></div>
+                  <div class="stat-card__change" id="stat-savings-change"></div>
+                </div>
+              </div>
+
+              <div class="dashboard__grid">
+                <div class="dashboard__chart-card">
+                  <div class="card__header">
+                    <h2>Spending by Category</h2>
+                  </div>
+                  <canvas id="spending-chart"></canvas>
+                </div>
+                <div class="dashboard__budget-card">
+                  <div class="card__header">
+                    <h2>Budget Overview</h2>
+                  </div>
+
+                  <div id="budget-overview-list"></div>
+                </div>
+              </div>
+
+              <div class="dashboard__grid">
+                <div class="dashboard__savings-card">
+                  <div class="card__header">
+                    <h2>Savings Goals</h2>
+                  </div>
+                  <div id="savings-goals-list"></div>
+                </div>
+
+                <div class="dashboard__comparison-card">
+                  <div class="card__header">
+                    <h2>Income vs Expenses</h2>
+                  </div>
+                  <canvas id="income-expense-chart"></canvas>
+                </div>
+              </div>
+            </div>
           </section>
 
           <section id="transactions" class="page">
