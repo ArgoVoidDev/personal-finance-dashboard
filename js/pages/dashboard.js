@@ -79,8 +79,62 @@ function renderSavingsGoals() {
   });
 }
 
+function renderIncomeExpenseChart() {
+  const canvas = document.getElementById("income-expense-chart");
+  const ctx = canvas.getContext("2d");
+
+  new Chart(ctx, {
+    type: "bar",
+    data: {
+      labels: ["Income", "Expenses"],
+      datasets: [
+        {
+          data: [getTotalIncome(), getTotalExpenses()],
+        },
+      ],
+    },
+  });
+}
+
+function renderSpendingChart() {
+  const canvas = document.getElementById("spending-chart");
+  const ctx = canvas.getContext("2d");
+
+  const spendingByCategory = {};
+
+  const transactions = getTransactions();
+
+  transactions.forEach((transaction) => {
+    const category = transaction.category;
+    const amount = transaction.amount;
+
+    if (!spendingByCategory[category]) {
+      spendingByCategory[category] = 0;
+    }
+
+    spendingByCategory[category] += amount;
+  });
+
+  const labels = Object.keys(spendingByCategory);
+  const data = Object.values(spendingByCategory);
+
+  new Chart(ctx, {
+    type: "pie",
+    data: {
+      labels: labels,
+      datasets: [
+        {
+          data: data,
+        },
+      ],
+    },
+  });
+}
+
 function initDashboard() {
   updateStatCards();
   renderBudgetOverview();
   renderSavingsGoals();
+  renderIncomeExpenseChart();
+  renderSpendingChart();
 }
