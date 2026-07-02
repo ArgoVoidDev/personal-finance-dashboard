@@ -80,6 +80,7 @@ function renderSavingsGoals() {
 }
 
 function renderIncomeExpenseChart() {
+  const chartColors = ["red", "green"];
   const canvas = document.getElementById("income-expense-chart");
   const ctx = canvas.getContext("2d");
 
@@ -89,6 +90,7 @@ function renderIncomeExpenseChart() {
       labels: ["Income", "Expenses"],
       datasets: [
         {
+          backgroundColor: chartColors,
           data: [getTotalIncome(), getTotalExpenses()],
         },
       ],
@@ -97,6 +99,7 @@ function renderIncomeExpenseChart() {
 }
 
 function renderSpendingChart() {
+  const chartColors = ["red", "green", "blue", "orange", "brown"];
   const canvas = document.getElementById("spending-chart");
   const ctx = canvas.getContext("2d");
 
@@ -104,7 +107,11 @@ function renderSpendingChart() {
 
   const transactions = getTransactions();
 
-  transactions.forEach((transaction) => {
+  const expenses = transactions.filter((transaction) => {
+    return transaction.type === "expense";
+  });
+
+  expenses.forEach((transaction) => {
     const category = transaction.category;
     const amount = transaction.amount;
 
@@ -124,6 +131,7 @@ function renderSpendingChart() {
       labels: labels,
       datasets: [
         {
+          backgroundColor: chartColors,
           data: data,
         },
       ],
