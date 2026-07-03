@@ -1,0 +1,58 @@
+/* ── Base ── */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.5rem 1rem;
+  border-radius: var(--radius-sm);
+  font-size: 0.875rem;
+  font-weight: 500;
+  font-family: var(--font-main);
+  cursor: pointer;
+  border: none;
+  white-space: nowrap;
+  transition: var(--transition);
+  line-height: 1;
+}
+
+/* ── Primary ── */
+.btn--primary {
+  background-color: var(--accent);
+  color: #fff;
+}
+.btn--primary:hover {
+  background-color: var(--accent-hover);
+}
+
+/* ── Secondary ── */
+.btn--secondary {
+  background-color: transparent;
+  color: var(--text-secondary);
+  border: 1px solid var(--border);
+}
+.btn--secondary:hover {
+  background-color: var(--bg-card-hover);
+  color: var(--text-primary);
+  border-color: var(--border-hover);
+}
+
+/* ── Icon-only ── */
+.btn--icon {
+  padding: 0.4rem;
+  color: var(--text-muted);
+}
+.btn--icon:hover {
+  background-color: var(--bg-card-hover);
+  color: var(--text-primary);
+}
+
+/* ── Danger ── */
+.btn--danger {
+  background-color: var(--red-light);
+  color: var(--red);
+  border: 1px solid transparent;
+}
+.btn--danger:hover {
+  background-color: var(--red);
+  color: #fff;
+}
