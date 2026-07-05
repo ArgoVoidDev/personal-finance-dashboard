@@ -63,7 +63,7 @@ function initTransactions() {
   exportBtn.addEventListener("click", exportToCSV);
 
   addBtn.addEventListener("click", () => {
-    // TODO: openModal()
+    openModal();
   });
 
   document.querySelectorAll(".sortable").forEach((header) => {
@@ -88,7 +88,7 @@ function initTransactions() {
 
     if (editBtn) {
       const id = editBtn.dataset.id;
-      // TODO: openEditModal(id)
+      openModal(id);
     }
 
     if (deleteBtn) {
