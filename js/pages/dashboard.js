@@ -79,20 +79,65 @@ function renderSavingsGoals() {
   });
 }
 
+function getLast6MonthsData() {
+  const transactions = getTransactions();
+  const months = [];
+
+  for (let i = 5; i >= 0; i--) {
+    const date = new Date();
+    date.setMonth(date.getMonth() - i);
+
+    const year = date.getFullYear();
+    const month = date.getMonth();
+
+    const label = date.toLocaleString("en-US", { month: "short" });
+
+    const monthTransactions = transactions.filter((t) => {
+      const d = new Date(t.date);
+      return d.getFullYear() === year && d.getMonth() === month;
+    });
+
+    const income = monthTransactions
+      .filter((t) => t.type === "income")
+      .reduce((sum, t) => sum + t.amount, 0);
+
+    const expense = monthTransactions
+      .filter((t) => t.type === "expense")
+      .reduce((sum, t) => sum + t.amount, 0);
+
+    months.push({ label, income, expense });
+  }
+
+  return months;
+}
+
 function renderIncomeExpenseChart() {
   const canvas = document.getElementById("income-expense-chart");
   const ctx = canvas.getContext("2d");
 
+  const monthsData = getLast6MonthsData();
+
+  const labels = monthsData.map((m) => m.label);
+  const incomeData = monthsData.map((m) => m.income);
+  const expenseData = monthsData.map((m) => m.expense);
+
   new Chart(ctx, {
     type: "bar",
     data: {
-      labels: ["Income", "Expenses"],
+      labels: labels,
       datasets: [
         {
-          label: "Amount",
-          backgroundColor: ["#6C63FF", "#F87171"],
-          data: [getTotalIncome(), getTotalExpenses()],
-          borderRadius: 6,
+          label: "Income",
+          data: incomeData,
+          backgroundColor: "#6C63FF",
+          borderRadius: 4,
+          borderSkipped: false,
+        },
+        {
+          label: "Expense",
+          data: expenseData,
+          backgroundColor: "#F87171",
+          borderRadius: 4,
           borderSkipped: false,
         },
       ],
@@ -102,6 +147,43 @@ function renderIncomeExpenseChart() {
       maintainAspectRatio: true,
       plugins: {
         legend: { display: false },
+        tooltip: {
+          backgroundColor: "#22263A",
+          borderColor: "#2E3248",
+          borderWidth: 1,
+          titleColor: "#F1F2F6",
+          bodyColor: "#9CA3AF",
+          padding: 12,
+          cornerRadius: 8,
+          callbacks: {
+            title: (items) => items[0].label,
+            label: (item) => {
+              const label = item.dataset.label;
+              const value = formatCurrency(item.raw);
+              return `${label}: ${value}`;
+            },
+          },
+        },
+      },
+      scales: {
+        x: {
+          grid: { display: false },
+          ticks: { color: "#9CA3AF" },
+          border: { display: false },
+        },
+        y: {
+          grid: {
+            color: "rgba(255,255,255,0.05)",
+          },
+          ticks: {
+            color: "#9CA3AF",
+            callback: (value) => {
+              if (value === 0) return "$0k";
+              return `$${value / 1000}k`;
+            },
+          },
+          border: { display: false },
+        },
       },
     },
   });
