@@ -11,6 +11,8 @@ const pageTitle = document.querySelector("#page-title");
 
 initState();
 
+const initializedPages = {};
+
 function navigateTo(pageId) {
   pages.forEach((page) => page.classList.remove("page--active"));
 
@@ -25,8 +27,14 @@ function navigateTo(pageId) {
 
   pageTitle.textContent = pageTitles[pageId];
 
-  if (pageId === "dashboard") {
-    initDashboard();
+  if (!initializedPages[pageId]) {
+    initializedPages[pageId] = true;
+
+    if (pageId === "dashboard") initDashboard();
+    if (pageId === "transactions") initTransactions();
+    if (pageId === "budget") initBudget();
+    if (pageId === "savings") initSavings();
+    if (pageId === "settings") initSettings();
   }
 }
 btns.forEach((button) => {
