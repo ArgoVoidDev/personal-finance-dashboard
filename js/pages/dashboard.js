@@ -80,7 +80,6 @@ function renderSavingsGoals() {
 }
 
 function renderIncomeExpenseChart() {
-  const chartColors = ["red", "green"];
   const canvas = document.getElementById("income-expense-chart");
   const ctx = canvas.getContext("2d");
 
@@ -90,16 +89,33 @@ function renderIncomeExpenseChart() {
       labels: ["Income", "Expenses"],
       datasets: [
         {
-          backgroundColor: chartColors,
+          label: "Amount",
+          backgroundColor: ["#6C63FF", "#F87171"],
           data: [getTotalIncome(), getTotalExpenses()],
+          borderRadius: 6,
+          borderSkipped: false,
         },
       ],
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: true,
+      plugins: {
+        legend: { display: false },
+      },
     },
   });
 }
 
 function renderSpendingChart() {
-  const chartColors = ["red", "green", "blue", "orange", "brown"];
+  const chartColors = [
+    "#6C63FF",
+    "#34D399",
+    "#F87171",
+    "#FBBF24",
+    "#22d3ee",
+    "#a78bfa",
+  ];
   const canvas = document.getElementById("spending-chart");
   const ctx = canvas.getContext("2d");
 
@@ -125,8 +141,36 @@ function renderSpendingChart() {
   const labels = Object.keys(spendingByCategory);
   const data = Object.values(spendingByCategory);
 
+  const totalSpending = data.reduce((sum, val) => sum + val, 0);
+
+  const centerTextPlugin = {
+    id: "centerText",
+    beforeDraw(chart) {
+      const {
+        ctx,
+        chartArea: { top, bottom, left, right },
+      } = chart;
+      const centerX = (left + right) / 2;
+      const centerY = (top + bottom) / 2;
+
+      ctx.save();
+
+      ctx.font = "500 12px Inter";
+      ctx.fillStyle = "#9CA3AF";
+      ctx.textAlign = "center";
+      ctx.fillText("Total", centerX, centerY - 10);
+
+      ctx.font = "700 18px Inter";
+      ctx.fillStyle = "#F1F2F6";
+      ctx.fillText(formatCurrency(totalSpending), centerX, centerY + 12);
+
+      ctx.restore();
+    },
+  };
+
   new Chart(ctx, {
-    type: "pie",
+    type: "doughnut",
+    plugins: [centerTextPlugin],
     data: {
       labels: labels,
       datasets: [
@@ -136,6 +180,30 @@ function renderSpendingChart() {
         },
       ],
     },
+    options: {
+      responsive: true,
+      maintainAspectRatio: true,
+      cutout: "70%",
+      plugins: {
+        legend: { display: false },
+      },
+    },
+  });
+  const legendContainer = document.getElementById("spending-chart-legend");
+  legendContainer.innerHTML = "";
+
+  labels.forEach((label, i) => {
+    const amount = data[i];
+    const percentage = Math.round((amount / totalSpending) * 100);
+
+    legendContainer.innerHTML += `
+    <div class="chart-legend-item">
+      <span class="chart-legend-dot" style="background-color: ${chartColors[i]}"></span>
+      <span class="chart-legend-label">${label}</span>
+      <span class="chart-legend-amount">${formatCurrency(amount)}</span>
+      <span class="chart-legend-percent">${percentage}%</span>
+    </div>
+  `;
   });
 }
 
