@@ -10,6 +10,7 @@ const btns = document.querySelectorAll(".sidebar__nav-btn");
 const pageTitle = document.querySelector("#page-title");
 
 initState();
+initModal();
 
 const initializedPages = {};
 
