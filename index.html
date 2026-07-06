@@ -321,6 +321,10 @@
                     <i class="fa-solid fa-chevron-right"></i>
                   </button>
                 </div>
+                <button class="btn btn--primary" id="add-budget-btn">
+                  <i class="fa-solid fa-plus"></i>
+                  Add Budget
+                </button>
               </div>
 
               <div class="budget__summary">
@@ -349,8 +353,9 @@
                   ></div>
                 </div>
               </div>
+
               <div class="budget__grid" id="budget-list">
-                <div class="budget-card budget-card--add" id="add-budget-card">
+                <div class="budget-card budget-card--add" id="budget-add-card">
                   <div class="budget-card--add-inner">
                     <div class="budget-card--add-icon">
                       <i class="fa-solid fa-plus"></i>
@@ -364,10 +369,18 @@
 
           <section id="savings" class="page">
             <div class="savings">
+              <div class="savings__header">
+                <h2 class="savings__title">Savings Goals</h2>
+                <button class="btn btn--primary" id="add-savings-btn">
+                  <i class="fa-solid fa-plus"></i>
+                  Add Goal
+                </button>
+              </div>
+
               <div class="savings__grid" id="savings-list">
                 <div
                   class="savings-card savings-card--add"
-                  id="add-savings-card"
+                  id="savings-add-card"
                 >
                   <div class="savings-card--add-inner">
                     <div class="savings-card--add-icon">

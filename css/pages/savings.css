@@ -4,6 +4,18 @@
   gap: var(--space-xl);
 }
 
+.savings__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.savings__title {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
 .savings__grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -13,119 +25,157 @@
 .savings-card {
   background: var(--bg-card);
   border-radius: var(--radius-md);
-  box-shadow: var(--shadow);
   padding: var(--space-lg);
   border: 1px solid var(--border);
   display: flex;
   flex-direction: column;
   gap: var(--space-md);
   min-width: 0;
-  position: relative;
   transition: var(--transition);
 }
+
 .savings-card__header {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
+  justify-content: space-between;
   gap: var(--space-sm);
+}
+
+.savings-card__info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.375rem;
+}
+
+.savings-card__name {
+  font-size: 0.9375rem;
   font-weight: 600;
   color: var(--text-primary);
 }
+
+.savings-card__actions {
+  display: flex;
+  gap: 0.25rem;
+  opacity: 0;
+  transition: opacity 0.15s ease;
+  flex-shrink: 0;
+}
+
+.savings-card:hover .savings-card__actions {
+  opacity: 1;
+}
+
+.savings-card__amounts {
+  display: flex;
+  align-items: baseline;
+  gap: 0.375rem;
+}
+
+.savings-card__saved {
+  font-size: 1.25rem;
+  font-weight: 700;
+  font-family: "JetBrains Mono", monospace;
+  color: var(--text-primary);
+}
+
+.savings-card__target {
+  font-size: 0.8125rem;
+  color: var(--text-muted);
+}
+
 .savings-card__progress {
   width: 100%;
   height: 6px;
-  background: var(--accent-light);
-  border-radius: var(--radius-sm);
-  margin: var(--space-sm) 0;
+  background: var(--bg-secondary);
+  border-radius: 999px;
   overflow: hidden;
 }
-.savings-card__progress-bar {
+
+.savings-card__progress-fill {
   height: 100%;
-  border-radius: var(--radius-sm);
+  border-radius: 999px;
+  background: var(--accent);
   transition: width 0.4s ease;
 }
-.savings-card__progress-bar--yellow {
-  background: var(--yellow);
-}
-.savings-card__progress-bar--green {
+
+.savings-card--completed .savings-card__progress-fill {
   background: var(--green);
 }
-.savings-card__progress-bar--red {
-  background: var(--red);
-}
-.savings-card__amount {
-  font-size: 1.25rem;
-  font-weight: 700;
-  color: var(--yellow);
-}
-.savings-card__amount--green {
-  color: var(--green);
-}
-.savings-card__amount--red {
-  color: var(--red);
-}
+
 .savings-card__footer {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  font-size: 0.9375rem;
+  font-size: 0.8125rem;
   color: var(--text-muted);
 }
-.savings-card__badge {
-  background: var(--green-light);
-  color: var(--green);
-  border-radius: var(--radius-sm);
-  padding: 2px 8px;
-  font-size: 0.75rem;
-  font-weight: 600;
-  margin-left: var(--space-sm);
+
+.savings-card__deposit {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 0.25rem;
+}
+
+.savings-card__deposit-input {
+  flex: 1;
+  min-width: 0;
+  padding: 0.4rem 0.75rem;
+  font-size: 0.8125rem;
+}
+
+.savings-card__deposit-btn {
+  flex-shrink: 0;
+  font-size: 0.8125rem;
+  padding: 0.4rem 0.75rem;
 }
 
 .savings-card--add {
   border: 2px dashed var(--border);
   background: none;
-  color: var(--accent);
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
   min-height: 160px;
-  transition: border-color 0.2s;
+  transition: border-color 0.2s ease;
 }
+
+.savings-card--add:hover {
+  border-color: var(--accent);
+}
+
 .savings-card--add-inner {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: var(--space-md);
-}
-.savings-card--add-inner i {
-  font-size: 1.5rem;
-  color: var(--accent);
-  width: 48px;
-  height: 48px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 50%;
-  background: var(--bg-secondary);
-  margin-bottom: var(--space-xs);
+  gap: var(--space-sm);
 }
 
 .savings-card--add-icon {
-  width: 48px;
-  height: 48px;
+  width: 44px;
+  height: 44px;
   border-radius: 50%;
   background: var(--bg-secondary);
   display: flex;
   align-items: center;
   justify-content: center;
   color: var(--accent);
-  margin-bottom: var(--space-xs);
+  font-size: 1rem;
 }
+
 .savings-card--add-label {
   color: var(--accent);
-  font-size: 1rem;
+  font-size: 0.9375rem;
   font-weight: 600;
 }
-.savings-card--add:hover {
-  border-color: var(--accent);
+
+.savings__empty {
+  grid-column: 1 / -1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 4rem 2rem;
+  text-align: center;
+  gap: 0.75rem;
 }
