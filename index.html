@@ -308,11 +308,76 @@
           </section>
 
           <section id="budget" class="page">
-            <!-- ......... -->
+            <div class="budget">
+              <div class="budget__header">
+                <div class="budget__month-nav">
+                  <button class="btn btn--icon" id="budget-prev-month">
+                    <i class="fa-solid fa-chevron-left"></i>
+                  </button>
+                  <span class="budget__month-label" id="budget-month-label"
+                    >June 2025</span
+                  >
+                  <button class="btn btn--icon" id="budget-next-month">
+                    <i class="fa-solid fa-chevron-right"></i>
+                  </button>
+                </div>
+              </div>
+
+              <div class="budget__summary">
+                <div class="stat-card">
+                  <div class="stat-card__header">
+                    <h3>Total Budget</h3>
+                    <i class="fa-solid fa-wallet"></i>
+                  </div>
+                  <div class="stat-card__amount" id="budget-stat-total"></div>
+                </div>
+                <div class="stat-card">
+                  <div class="stat-card__header">
+                    <h3>Total Spent</h3>
+                    <i class="fa-solid fa-arrow-trend-down"></i>
+                  </div>
+                  <div class="stat-card__amount" id="budget-stat-spent"></div>
+                </div>
+                <div class="stat-card">
+                  <div class="stat-card__header">
+                    <h3>Remaining</h3>
+                    <i class="fa-solid fa-piggy-bank"></i>
+                  </div>
+                  <div
+                    class="stat-card__amount"
+                    id="budget-stat-remaining"
+                  ></div>
+                </div>
+              </div>
+              <div class="budget__grid" id="budget-list">
+                <div class="budget-card budget-card--add" id="add-budget-card">
+                  <div class="budget-card--add-inner">
+                    <div class="budget-card--add-icon">
+                      <i class="fa-solid fa-plus"></i>
+                    </div>
+                    <div class="budget-card--add-label">Add Budget</div>
+                  </div>
+                </div>
+              </div>
+            </div>
           </section>
 
           <section id="savings" class="page">
-            <!-- ......... -->
+            <div class="savings">
+              <div class="savings__grid" id="savings-list">
+                <div
+                  class="savings-card savings-card--add"
+                  id="add-savings-card"
+                >
+                  <div class="savings-card--add-inner">
+                    <div class="savings-card--add-icon">
+                      <i class="fa-solid fa-plus"></i>
+                    </div>
+                    <div class="savings-card--add-label">New Goal</div>
+                  </div>
+                </div>
+              </div>
+            </div>
           </section>
 
           <section id="settings" class="page">
