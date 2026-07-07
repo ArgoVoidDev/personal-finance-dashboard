@@ -534,6 +534,170 @@
       </div>
     </div>
 
+    <!-- Budget Modal -->
+    <div id="budget-modal" class="modal-overlay" aria-hidden="true">
+      <div
+        class="modal"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="budget-modal-title"
+      >
+        <div class="modal__header">
+          <h2 class="modal__title" id="budget-modal-title">Add Budget</h2>
+          <button
+            class="btn btn--icon"
+            id="budget-modal-close-btn"
+            aria-label="Close"
+          >
+            <i class="fa-solid fa-xmark"></i>
+          </button>
+        </div>
+
+        <div class="modal__body">
+          <!-- Category -->
+          <div class="form-group">
+            <label class="form-label" for="budget-modal-category"
+              >Category</label
+            >
+            <select id="budget-modal-category" class="form-select">
+              <option value="">Select a category</option>
+              <option value="housing">Housing</option>
+              <option value="food">Food</option>
+              <option value="transport">Transport</option>
+              <option value="entertainment">Entertainment</option>
+              <option value="health">Health</option>
+              <option value="other">Other</option>
+            </select>
+            <span class="form-error" id="budget-modal-category-error"></span>
+          </div>
+
+          <!-- Monthly Limit -->
+          <div class="form-group">
+            <label class="form-label" for="budget-modal-limit"
+              >Monthly Limit</label
+            >
+            <div class="form-input-wrapper">
+              <span class="form-input-prefix">$</span>
+              <input
+                type="number"
+                id="budget-modal-limit"
+                class="form-input form-input--prefixed"
+                placeholder="0.00"
+                min="0"
+                step="0.01"
+              />
+            </div>
+            <span class="form-error" id="budget-modal-limit-error"></span>
+          </div>
+        </div>
+
+        <div class="modal__footer">
+          <button class="btn btn--secondary" id="budget-modal-cancel-btn">
+            Cancel
+          </button>
+          <button class="btn btn--primary" id="budget-modal-submit-btn">
+            <i class="fa-solid fa-check"></i>
+            Save Budget
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Savings Modal -->
+    <div id="savings-modal" class="modal-overlay" aria-hidden="true">
+      <div
+        class="modal"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="savings-modal-title"
+      >
+        <div class="modal__header">
+          <h2 class="modal__title" id="savings-modal-title">
+            Add Savings Goal
+          </h2>
+          <button
+            class="btn btn--icon"
+            id="savings-modal-close-btn"
+            aria-label="Close"
+          >
+            <i class="fa-solid fa-xmark"></i>
+          </button>
+        </div>
+
+        <div class="modal__body">
+          <!-- Goal Name -->
+          <div class="form-group">
+            <label class="form-label" for="savings-modal-name">Goal Name</label>
+            <input
+              type="text"
+              id="savings-modal-name"
+              class="form-input"
+              placeholder="e.g. Emergency Fund"
+              maxlength="100"
+            />
+            <span class="form-error" id="savings-modal-name-error"></span>
+          </div>
+
+          <!-- Target Amount -->
+          <div class="form-group">
+            <label class="form-label" for="savings-modal-target"
+              >Target Amount</label
+            >
+            <div class="form-input-wrapper">
+              <span class="form-input-prefix">$</span>
+              <input
+                type="number"
+                id="savings-modal-target"
+                class="form-input form-input--prefixed"
+                placeholder="0.00"
+                min="0"
+                step="0.01"
+              />
+            </div>
+            <span class="form-error" id="savings-modal-target-error"></span>
+          </div>
+
+          <!-- Saved Amount -->
+          <div class="form-group">
+            <label class="form-label" for="savings-modal-saved">
+              Already Saved
+              <span class="form-label--optional">(optional)</span>
+            </label>
+            <div class="form-input-wrapper">
+              <span class="form-input-prefix">$</span>
+              <input
+                type="number"
+                id="savings-modal-saved"
+                class="form-input form-input--prefixed"
+                placeholder="0.00"
+                min="0"
+                step="0.01"
+              />
+            </div>
+          </div>
+
+          <!-- Deadline -->
+          <div class="form-group">
+            <label class="form-label" for="savings-modal-deadline">
+              Target Date
+              <span class="form-label--optional">(optional)</span>
+            </label>
+            <input type="date" id="savings-modal-deadline" class="form-input" />
+          </div>
+        </div>
+
+        <div class="modal__footer">
+          <button class="btn btn--secondary" id="savings-modal-cancel-btn">
+            Cancel
+          </button>
+          <button class="btn btn--primary" id="savings-modal-submit-btn">
+            <i class="fa-solid fa-check"></i>
+            Save Goal
+          </button>
+        </div>
+      </div>
+    </div>
+
     <!-- JS -->
     <script src="js/core/storage.js"></script>
     <script src="js/core/state.js"></script>
