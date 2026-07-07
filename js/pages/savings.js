@@ -173,8 +173,3 @@ function renderSavingsEmptyState() {
     </div>
   `;
 }
-
-// fix that later, for now just log the savingsId
-function openSavingsModal(savingsId) {
-  console.log("openSavingsModal", savingsId);
-}

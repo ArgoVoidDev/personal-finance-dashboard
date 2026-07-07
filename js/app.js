@@ -11,6 +11,8 @@ const pageTitle = document.querySelector("#page-title");
 
 initState();
 initModal();
+initBudgetModal();
+initSavingsModal();
 
 const initializedPages = {};
 
