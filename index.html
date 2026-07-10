@@ -398,7 +398,161 @@
           </section>
 
           <section id="settings" class="page">
-            <!-- ......... -->
+            <div class="settings">
+              <!-- Profile -->
+              <div class="settings__group">
+                <h3 class="settings__group-title">Profile</h3>
+                <div class="settings-card">
+                  <div class="settings-row">
+                    <div class="settings-row__info">
+                      <label class="settings-row__label" for="settings-name"
+                        >Display Name</label
+                      >
+                      <span class="settings-row__desc"
+                        >Your name shown in the sidebar</span
+                      >
+                    </div>
+                    <input
+                      type="text"
+                      id="settings-name"
+                      class="form-input settings-row__input"
+                      placeholder="Alex Kim"
+                      maxlength="50"
+                    />
+                  </div>
+                  <div class="settings-row">
+                    <div class="settings-row__info">
+                      <label class="settings-row__label" for="settings-email"
+                        >Email</label
+                      >
+                      <span class="settings-row__desc"
+                        >Your email shown in the sidebar</span
+                      >
+                    </div>
+                    <input
+                      type="email"
+                      id="settings-email"
+                      class="form-input settings-row__input"
+                      placeholder="alex@finio.app"
+                      maxlength="100"
+                    />
+                  </div>
+                </div>
+              </div>
+
+              <!-- Preferences -->
+              <div class="settings__group">
+                <h3 class="settings__group-title">Preferences</h3>
+                <div class="settings-card">
+                  <div class="settings-row">
+                    <div class="settings-row__info">
+                      <label class="settings-row__label" for="settings-currency"
+                        >Currency</label
+                      >
+                      <span class="settings-row__desc"
+                        >Used for all amounts across the app</span
+                      >
+                    </div>
+                    <select
+                      id="settings-currency"
+                      class="form-select settings-row__select"
+                    >
+                      <option value="USD">$ USD — US Dollar</option>
+                      <option value="EUR">€ EUR — Euro</option>
+                      <option value="GBP">£ GBP — British Pound</option>
+                      <option value="IRR">﷼ IRR — Iranian Rial</option>
+                    </select>
+                  </div>
+                  <div class="settings-row">
+                    <div class="settings-row__info">
+                      <label class="settings-row__label" for="settings-theme"
+                        >Theme</label
+                      >
+                      <span class="settings-row__desc"
+                        >Switch between light and dark mode</span
+                      >
+                    </div>
+                    <select
+                      id="settings-theme"
+                      class="form-select settings-row__select"
+                    >
+                      <option value="dark">Dark</option>
+                      <option value="light">Light</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Data -->
+              <div class="settings__group">
+                <h3 class="settings__group-title">Data</h3>
+                <div class="settings-card">
+                  <div class="settings-row">
+                    <div class="settings-row__info">
+                      <span class="settings-row__label">Export Data</span>
+                      <span class="settings-row__desc"
+                        >Download all your data as a JSON file</span
+                      >
+                    </div>
+                    <button class="btn btn--secondary" id="settings-export-btn">
+                      <i class="fa-solid fa-file-arrow-down"></i>
+                      Export JSON
+                    </button>
+                  </div>
+                  <div class="settings-row">
+                    <div class="settings-row__info">
+                      <span class="settings-row__label">Import Data</span>
+                      <span class="settings-row__desc"
+                        >Restore your data from a JSON file</span
+                      >
+                    </div>
+                    <label
+                      class="btn btn--secondary"
+                      for="settings-import-input"
+                    >
+                      <i class="fa-solid fa-file-arrow-up"></i>
+                      Import JSON
+                      <input
+                        type="file"
+                        id="settings-import-input"
+                        accept=".json"
+                        style="display: none"
+                      />
+                    </label>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Danger Zone -->
+              <div class="settings__group">
+                <h3 class="settings__group-title settings__group-title--danger">
+                  Danger Zone
+                </h3>
+                <div class="settings-card settings-card--danger">
+                  <div class="settings-row">
+                    <div class="settings-row__info">
+                      <span class="settings-row__label">Clear All Data</span>
+                      <span class="settings-row__desc"
+                        >Permanently delete all transactions, budgets, and
+                        savings goals</span
+                      >
+                    </div>
+                    <button class="btn btn--danger" id="settings-clear-btn">
+                      <i class="fa-solid fa-trash"></i>
+                      Clear All Data
+                    </button>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Save Button -->
+              <div class="settings__footer">
+                <button class="btn btn--primary" id="settings-save-btn">
+                  <i class="fa-solid fa-check"></i>
+                  Save Changes
+                </button>
+              </div>
+            </div>
           </section>
         </main>
       </div>
