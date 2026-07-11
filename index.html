@@ -401,40 +401,33 @@
             <div class="settings">
               <!-- Profile -->
               <div class="settings__group">
-                <h3 class="settings__group-title">Profile</h3>
-                <div class="settings-card">
-                  <div class="settings-row">
-                    <div class="settings-row__info">
-                      <label class="settings-row__label" for="settings-name"
-                        >Display Name</label
-                      >
-                      <span class="settings-row__desc"
-                        >Your name shown in the sidebar</span
-                      >
+                <div class="settings__group-header">
+                  <h3 class="settings__group-title">Profile</h3>
+                  <p class="settings__group-desc">Your personal information</p>
+                </div>
+                <div class="settings__card">
+                  <div class="settings__row">
+                    <div class="settings__row-info">
+                      <span class="settings__row-label">Name</span>
+                      <span class="settings__row-desc">Your display name</span>
                     </div>
                     <input
                       type="text"
                       id="settings-name"
-                      class="form-input settings-row__input"
+                      class="form-input settings__input"
                       placeholder="Alex Kim"
-                      maxlength="50"
                     />
                   </div>
-                  <div class="settings-row">
-                    <div class="settings-row__info">
-                      <label class="settings-row__label" for="settings-email"
-                        >Email</label
-                      >
-                      <span class="settings-row__desc"
-                        >Your email shown in the sidebar</span
-                      >
+                  <div class="settings__row">
+                    <div class="settings__row-info">
+                      <span class="settings__row-label">Email</span>
+                      <span class="settings__row-desc">Shown in sidebar</span>
                     </div>
                     <input
                       type="email"
                       id="settings-email"
-                      class="form-input settings-row__input"
+                      class="form-input settings__input"
                       placeholder="alex@finio.app"
-                      maxlength="100"
                     />
                   </div>
                 </div>
@@ -442,20 +435,21 @@
 
               <!-- Preferences -->
               <div class="settings__group">
-                <h3 class="settings__group-title">Preferences</h3>
-                <div class="settings-card">
-                  <div class="settings-row">
-                    <div class="settings-row__info">
-                      <label class="settings-row__label" for="settings-currency"
-                        >Currency</label
-                      >
-                      <span class="settings-row__desc"
-                        >Used for all amounts across the app</span
+                <div class="settings__group-header">
+                  <h3 class="settings__group-title">Preferences</h3>
+                  <p class="settings__group-desc">Customize your experience</p>
+                </div>
+                <div class="settings__card">
+                  <div class="settings__row">
+                    <div class="settings__row-info">
+                      <span class="settings__row-label">Currency</span>
+                      <span class="settings__row-desc"
+                        >Used across all amounts</span
                       >
                     </div>
                     <select
                       id="settings-currency"
-                      class="form-select settings-row__select"
+                      class="form-select settings__select"
                     >
                       <option value="USD">$ USD — US Dollar</option>
                       <option value="EUR">€ EUR — Euro</option>
@@ -463,35 +457,42 @@
                       <option value="IRR">﷼ IRR — Iranian Rial</option>
                     </select>
                   </div>
-                  <div class="settings-row">
-                    <div class="settings-row__info">
-                      <label class="settings-row__label" for="settings-theme"
-                        >Theme</label
-                      >
-                      <span class="settings-row__desc"
-                        >Switch between light and dark mode</span
+                  <div class="settings__row">
+                    <div class="settings__row-info">
+                      <span class="settings__row-label">Theme</span>
+                      <span class="settings__row-desc"
+                        >Light or dark interface</span
                       >
                     </div>
-                    <select
-                      id="settings-theme"
-                      class="form-select settings-row__select"
-                    >
-                      <option value="dark">Dark</option>
-                      <option value="light">Light</option>
-                    </select>
+                    <div class="settings__theme-toggle">
+                      <button
+                        class="settings__theme-btn settings__theme-btn--active"
+                        data-theme="dark"
+                      >
+                        <i class="fa-solid fa-moon"></i>
+                        Dark
+                      </button>
+                      <button class="settings__theme-btn" data-theme="light">
+                        <i class="fa-solid fa-sun"></i>
+                        Light
+                      </button>
+                    </div>
                   </div>
                 </div>
               </div>
 
               <!-- Data -->
               <div class="settings__group">
-                <h3 class="settings__group-title">Data</h3>
-                <div class="settings-card">
-                  <div class="settings-row">
-                    <div class="settings-row__info">
-                      <span class="settings-row__label">Export Data</span>
-                      <span class="settings-row__desc"
-                        >Download all your data as a JSON file</span
+                <div class="settings__group-header">
+                  <h3 class="settings__group-title">Data</h3>
+                  <p class="settings__group-desc">Manage your stored data</p>
+                </div>
+                <div class="settings__card">
+                  <div class="settings__row">
+                    <div class="settings__row-info">
+                      <span class="settings__row-label">Export Data</span>
+                      <span class="settings__row-desc"
+                        >Download all your data as JSON</span
                       >
                     </div>
                     <button class="btn btn--secondary" id="settings-export-btn">
@@ -499,47 +500,35 @@
                       Export JSON
                     </button>
                   </div>
-                  <div class="settings-row">
-                    <div class="settings-row__info">
-                      <span class="settings-row__label">Import Data</span>
-                      <span class="settings-row__desc"
-                        >Restore your data from a JSON file</span
+                  <div class="settings__row">
+                    <div class="settings__row-info">
+                      <span class="settings__row-label">Import Data</span>
+                      <span class="settings__row-desc"
+                        >Restore from a JSON backup</span
                       >
                     </div>
-                    <label
-                      class="btn btn--secondary"
-                      for="settings-import-input"
-                    >
+                    <label class="btn btn--secondary settings__import-label">
                       <i class="fa-solid fa-file-arrow-up"></i>
                       Import JSON
                       <input
                         type="file"
                         id="settings-import-input"
                         accept=".json"
-                        style="display: none"
+                        hidden
                       />
                     </label>
                   </div>
-                </div>
-              </div>
-
-              <!-- Danger Zone -->
-              <div class="settings__group">
-                <h3 class="settings__group-title settings__group-title--danger">
-                  Danger Zone
-                </h3>
-                <div class="settings-card settings-card--danger">
-                  <div class="settings-row">
-                    <div class="settings-row__info">
-                      <span class="settings-row__label">Clear All Data</span>
-                      <span class="settings-row__desc"
-                        >Permanently delete all transactions, budgets, and
-                        savings goals</span
+                  <div class="settings__row settings__row--danger">
+                    <div class="settings__row-info">
+                      <span class="settings__row-label">Clear All Data</span>
+                      <span class="settings__row-desc"
+                        >Permanently delete all transactions, budgets and
+                        goals</span
                       >
                     </div>
                     <button class="btn btn--danger" id="settings-clear-btn">
                       <i class="fa-solid fa-trash"></i>
-                      Clear All Data
+                      Clear Data
                     </button>
                   </div>
                 </div>
